@@ -1,38 +1,51 @@
 package com;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+
+@Controller
 public class MessagesController {
-    private UserDAO userDAO = new UserDAOImpl();
 
-    private MessageDAO messageDAO = new MessageDAOImpl();
+    @Autowired
+    private MessageService messageService;
+
+    @Autowired
+    private UserDAO userDAO;
 
 
-    Message sendMessage(User fromUser, User toUser, String msg) throws Exception {
-        if (!fromUser.isLogged()) throw new Exception("you are is not logged in");
+    @RequestMapping("/sendMessage")
+    ModelAndView sendMessage() {
+        List<User> userList = userDAO.getAll();
+        User fromUser = userList.get(0);
+        User toUser = userList.get(1);
+        Message message = new Message(101, "Привет!! тест", fromUser, toUser);
 
-        Message message = new Message(101, msg, fromUser, toUser);
+        if (!fromUser.isLogged()) {
+            ModelAndView modelAndView = new ModelAndView("error");
+            modelAndView.addObject("error", "you are is not logged in");
+            return modelAndView;
+        }
 
-       // messageDAO.save(message);
+        messageService.sendMessage(message);
 
-        return message;
+        ModelAndView modelAndView = new ModelAndView("text");
+        modelAndView.addObject("text", "message was sent");
+        return modelAndView;
     }
 
-    //getUserMessages - size - count messages
-    //getMessages() {
-    // User user = new User(1001,"Roman", Gender.MALE , "123", "Kiev");
-    //create test messages
-    //add messages to user
-    // }
+    @RequestMapping("/messagesCount")
+    ModelAndView getMessages() {
+        User user = new User(1001, "Roman", Gender.MALE, "123", "Kiev");
 
-    //getUserMessages - show 1 messages
-    //getMessages() {
-    // User user = new User(1001,"Roman", Gender.MALE , "123", "Kiev");
-    //create test messages
-    //add messages to user
-    // }
+        ModelAndView modelAndView = new ModelAndView("text");
+        modelAndView.addObject("text", messageService.msgCount(user.getId()));
 
-
-    public MessageDAO getMessageDAO(User user) {
-        return messageDAO;
+        return modelAndView;
     }
+
 }

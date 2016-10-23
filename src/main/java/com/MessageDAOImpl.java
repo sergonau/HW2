@@ -1,8 +1,11 @@
 package com;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class MessageDAOImpl extends AbstractDAOImpl<Message> implements MessageDAO {
 
     private static List<Message> messages = new ArrayList<>();
@@ -26,10 +29,5 @@ public class MessageDAOImpl extends AbstractDAOImpl<Message> implements MessageD
         }
 
         return res;
-    }
-
-    @Override
-    public List<Message> getByUser(User user) {
-        return null;
     }
 }

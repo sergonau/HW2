@@ -1,13 +1,15 @@
 package com;
 
-public interface AbstractDAO<T> {
+import java.util.List;
+
+public interface AbstractDAO<T extends BaseEntity> {
     T save(T t);
 
-    //update
+    T update(T t);
 
-    //delete
+    T delete(T t);
 
-    //T findById(long id);
+    T findById(long id);
 
-    //getAll
+    List<T> getAll();
 }

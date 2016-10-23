@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class User {
+public class User extends BaseEntity {
     private long id;
     private String name;
     private int age;
@@ -19,7 +19,6 @@ public class User {
 
     private boolean isActive;
 
-    //temlporary
     private boolean isLogged;
 
     public User(long id, String name, Gender gender, String password, String city) {

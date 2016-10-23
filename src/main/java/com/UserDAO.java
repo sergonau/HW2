@@ -3,7 +3,7 @@ package com;
 import java.util.List;
 
 public interface UserDAO {
-    User save(User user);
+    User saveUser(User user);
 
     List<User> getAll();
 
@@ -11,11 +11,7 @@ public interface UserDAO {
 
     void clean();
 
-    void setLogin(User user);
+    User updateUser(User user);
 
-    //User delete(User user);
 
-    //User makeInactive(User user);
-
-    //User update(User user);
 }

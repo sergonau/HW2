@@ -2,7 +2,7 @@ package com;
 
 import java.util.Date;
 
-public class Message {
+public class Message extends BaseEntity {
     private long id;
 
     //in real systems string is not used

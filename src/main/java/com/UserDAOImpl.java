@@ -1,43 +1,32 @@
 package com;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
-public class UserDAOImpl implements UserDAO {
-    //emulates db
-    private static List<User> users = new ArrayList<>();
+@Repository
+public class UserDAOImpl extends AbstractDAOImpl<User> implements UserDAO {
 
     @Override
-    public User save(User user) {
-        users.add(user);
-        return user;
+    public User saveUser(User user) {
+        return save(user);
+    }
+
+    @Override
+    public User updateUser(User user) {
+        return update(user);
     }
 
     @Override
     public void clean() {
-        users.clear();
-    }
-
-    @Override
-    public void setLogin(User user) {
-        if (user.isLogged()) user.setLogged(false);
-        else user.setLogged(true);
-
-        users.remove(user);
-        users.add(user);
+        getAll().clear();
     }
 
     @Override
     public User get(String name, String psw) {
-        for (User user : users) {
+        for (User user : getAll()) {
             if (user.getName().equals(name) && user.getPassword().equals(psw))
                 return user;
         }
         return null;
     }
 
-    @Override
-    public List<User> getAll() {
-        return users;
-    }
 }

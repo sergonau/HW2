@@ -1,5 +1,6 @@
 package com;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,54 +11,54 @@ import java.util.List;
 public class UserController {
 
     //db connection emul
-    private UserDAO userDAO = new UserDAOImpl();
+    @Autowired
+    private UserService userService;
+    
 
-    //db connection emulator
-    //private MessageDAO messageDAO = new MessageDAOImpl();
+    @RequestMapping("/login")
+    ModelAndView login() {
+        //test data
+        String name = "Roman";
+        String password = "123";
 
-    //requestmapping /login
-    User login(String name, String password) throws Exception {
-        //name , password - create test
-        //if user exist - congrats, you are logged in
-        //else wronf credentials
-        //you must use one jsp
-        User curUser = userDAO.get(name, password);
+        User curUser = userService.login(name, password);
 
+        ModelAndView modelAndView;
         if (curUser == null)
-            throw new Exception("wrong username or password");
+            return new ModelAndView("error");
+        else modelAndView = new ModelAndView("welcome");
 
-        userDAO.setLogin(curUser);
+        modelAndView.addObject("user", curUser);
+        modelAndView.addObject("state", "logged in");
 
-        return curUser;
+        return modelAndView;
     }
 
+    @RequestMapping("/logout")
+    ModelAndView logout() {
+        //test data
+        User user = new User(1001, "Roman", Gender.MALE, "123", "Kiev");
 
+        userService.logout(user);
 
-    void logout(User user) {
-        userDAO.setLogin(user);
+        return new ModelAndView("home");
     }
 
-    //json format
 
     @RequestMapping("/register")
     ModelAndView register() throws Exception {
-        User user = new User(1001,"Roman", Gender.MALE , "123", "Kiev");
+        User user = new User(1001, "Roman", Gender.MALE, "123", "Kiev");
 
-        //dbConnection.save(user)
-        userDAO.save(user);
-
-       // if (savedUser == null) throw new Exception("user is not saved");
-
-       // user.setLogged(true);
-
+        User savedUser = userService.saveUser(user);
         ModelAndView modelAndView = new ModelAndView("welcome");
-        modelAndView.addObject("user", user);
+        modelAndView.addObject("user", savedUser);
+        modelAndView.addObject("state", "registered");
         return modelAndView;
     }
 
     @RequestMapping("/users")
     ModelAndView getUsers() {
-        List<User> users = userDAO.getAll();
+        List<User> users = userService.getAll();
         ModelAndView modelAndView = new ModelAndView("users");
         modelAndView.addObject("users", users);
         return modelAndView;
@@ -65,28 +66,17 @@ public class UserController {
 
     @RequestMapping("/clean")
     ModelAndView clean() {
-        userDAO.clean();
+        userService.clean();
         ModelAndView modelAndView = new ModelAndView("users");
-        modelAndView.addObject("users", userDAO.getAll());
+        modelAndView.addObject("users", userService.getAll());
         return modelAndView;
     }
 
-    void addToFriend(User fromUser, User toUser) throws Exception {
-        //bad option
-        /*if(fromUser.isLogged()) {
-            fromUser.getFriends().add(toUser);
-            toUser.getFriends().add(fromUser);
-        }
-        else {
-            throw new Exception("you are is not logged in");
-        }*/
 
-        if (!fromUser.isLogged()) throw new Exception("you are is not logged in");
-
-        fromUser.getFriends().add(toUser);
-        toUser.getFriends().add(fromUser);
+    @RequestMapping("/addToFriend")
+    void addToFriend() throws Exception {
+        userService.addToFriend();
     }
-
 
    /* List<Message> getMessages(long userId) {
         //if (!fromUser.isLogged()) throw new Exception("you are is not logged in");
@@ -115,8 +105,6 @@ public class UserController {
 
     //inclass
     //TODO inboxMessages/outboxMessages for time period
-
-
 
 
 }

@@ -3,8 +3,7 @@
 <head>
     <title>$Title$</title>
 </head>
-<body>Congrats, ${user.name}, you are ${state}!
-${user.city}
-${user.id}
+<body>
+Wrong login or password! <!--error-->
 </body>
 </html>
