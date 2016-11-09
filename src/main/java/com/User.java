@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class User extends BaseEntity {
-    private long id;
+    private Long id;
     private String name;
     private int age;
     private Gender gender;
@@ -41,7 +41,7 @@ public class User extends BaseEntity {
                 '}';
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

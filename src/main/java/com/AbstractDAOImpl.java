@@ -17,7 +17,7 @@ public class AbstractDAOImpl<T extends BaseEntity> implements AbstractDAO<T> {
         return t;
     }
 
-    @Override
+   /* @Override
     public List<T> getAll() {
         return list;
     }
@@ -48,5 +48,5 @@ public class AbstractDAOImpl<T extends BaseEntity> implements AbstractDAO<T> {
         };
         list.replaceAll(unaryOperator);
         return t;
-    }
+    }*/
 }

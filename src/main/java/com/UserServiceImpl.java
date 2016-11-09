@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
+    /*@Autowired
     private UserDAO userDAO;
 
     @Override
@@ -74,5 +74,5 @@ public class UserServiceImpl implements UserService {
 
         fromUser.getFriends().add(toUser);
         toUser.getFriends().add(fromUser);
-    }
+    }*/
 }

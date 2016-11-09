@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface UserService {
 
-    User saveUser(User user) throws Exception;
+   /* User saveUser(User user) throws Exception;
 
     List<User> getAll();
 
@@ -18,5 +18,5 @@ public interface UserService {
 
     User logout(User user);
 
-    void addToFriend() throws Exception;
+    void addToFriend() throws Exception;*/
 }

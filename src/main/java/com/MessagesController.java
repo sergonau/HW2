@@ -11,7 +11,7 @@ import java.util.List;
 @Controller
 public class MessagesController {
 
-    @Autowired
+   /* @Autowired
     private MessageService messageService;
 
     @Autowired
@@ -46,6 +46,6 @@ public class MessagesController {
         modelAndView.addObject("text", messageService.msgCount(user.getId()));
 
         return modelAndView;
-    }
+    }*/
 
 }

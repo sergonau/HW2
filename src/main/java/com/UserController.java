@@ -13,9 +13,12 @@ public class UserController {
     //db connection emul
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserDAO userDAO;
     
 
-    @RequestMapping("/login")
+    /*@RequestMapping("/login")
     ModelAndView login() {
         //test data
         String name = "Roman";
@@ -54,16 +57,17 @@ public class UserController {
         modelAndView.addObject("user", savedUser);
         modelAndView.addObject("state", "registered");
         return modelAndView;
-    }
+    }*/
 
     @RequestMapping("/users")
     ModelAndView getUsers() {
-        List<User> users = userService.getAll();
+        List<Users> users = userDAO.getAll();
         ModelAndView modelAndView = new ModelAndView("users");
         modelAndView.addObject("users", users);
         return modelAndView;
     }
 
+    /*
     @RequestMapping("/clean")
     ModelAndView clean() {
         userService.clean();
@@ -78,7 +82,7 @@ public class UserController {
         userService.addToFriend();
     }
 
-   /* List<Message> getMessages(long userId) {
+   *//* List<Message> getMessages(long userId) {
         //if (!fromUser.isLogged()) throw new Exception("you are is not logged in");
         return messageDAO.getByUserId(userId);
     }
@@ -100,11 +104,11 @@ public class UserController {
         //TODO make implemetation
 
         return null;
-    }*/
+    }*//*
 
 
     //inclass
-    //TODO inboxMessages/outboxMessages for time period
+    //TODO inboxMessages/outboxMessages for time period*/
 
 
 }

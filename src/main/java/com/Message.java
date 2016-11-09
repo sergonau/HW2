@@ -46,7 +46,7 @@ public class Message extends BaseEntity {
         isActive = active;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
