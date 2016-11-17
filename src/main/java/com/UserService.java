@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface UserService {
 
-   /* User saveUser(User user) throws Exception;
+    Users saveUser(Users user);
 
-    List<User> getAll();
+   /* List<User> getAll();
 
     User get(String name, String psw);
 

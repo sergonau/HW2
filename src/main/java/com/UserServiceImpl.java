@@ -7,20 +7,15 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    /*@Autowired
+    @Autowired
     private UserDAO userDAO;
 
     @Override
-    public User saveUser(User user) throws Exception {
-        User savedUser = userDAO.saveUser(user);
-
-        if (savedUser == null) throw new Exception("user is not saved");
-        savedUser.setLogged(true);
-
-        return savedUser;
+    public Users saveUser(Users user) {
+        return userDAO.saveUser(user);
     }
 
-    @Override
+   /* @Override
     public List<User> getAll() {
         return userDAO.getAll();
     }

@@ -45,19 +45,19 @@ public class UserController {
         userService.logout(user);
 
         return new ModelAndView("home");
-    }
+    }*/
 
 
     @RequestMapping("/register")
     ModelAndView register() throws Exception {
-        User user = new User(1001, "Roman", Gender.MALE, "123", "Kiev");
+        Users user = new Users("test@gmail.com", "password", "admin");
 
-        User savedUser = userService.saveUser(user);
+        Users savedUser = userService.saveUser(user);
         ModelAndView modelAndView = new ModelAndView("welcome");
         modelAndView.addObject("user", savedUser);
         modelAndView.addObject("state", "registered");
         return modelAndView;
-    }*/
+    }
 
     @RequestMapping("/users")
     ModelAndView getUsers() {

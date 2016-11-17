@@ -80,24 +80,14 @@ public class Users extends BaseEntity {
     public Users() {
     }
 
-    public Users(String email, String password, String userName) {
-        this.password = password;
+    public Users(String email, String password, String type) {
         this.email = email;
-        this.userName = userName;
+        this.password = password;
+        this.type = type;
 
+        this.isActive = 1;
         this.registered = new Date();
         this.lastLogin = new Date();
-        this.isActive = 1;
-    }
-
-    public Users(String email, String userName, String lastName, String groupNumber, String password) {
-        this.email = email;
-        this.userName = userName;
-        this.password = password;
-
-        this.registered = new Date();
-        this.lastLogin = new Date();
-        this.isActive = 1;
     }
 
     public void setId(long id) {

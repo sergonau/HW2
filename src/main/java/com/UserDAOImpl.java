@@ -2,10 +2,12 @@ package com;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
+@Transactional
 public class UserDAOImpl extends AbstractDAOImplDB<Users> implements UserDAO {
 
     @Override
@@ -15,7 +17,7 @@ public class UserDAOImpl extends AbstractDAOImplDB<Users> implements UserDAO {
 
     @Override
     public List<Users> getAll() {
-        String sql = "SELECT * FROM USERS";
+        String sql = "from Users t";
         Query query = getSession().createQuery(sql);
         return query.list();
     }

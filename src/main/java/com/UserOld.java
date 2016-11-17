@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class User extends BaseEntity {
+public class UserOld extends BaseEntity {
     private Long id;
     private String name;
     private int age;
     private Gender gender;
     private String password;
-    private List<User> friends;
+    private List<UserOld> friends;
     private List<Message> messages;
 
     private String city;
@@ -21,7 +21,7 @@ public class User extends BaseEntity {
 
     private boolean isLogged;
 
-    public User(long id, String name, Gender gender, String password, String city) {
+    public UserOld(long id, String name, Gender gender, String password, String city) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -77,11 +77,11 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    public List<User> getFriends() {
+    public List<UserOld> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<User> friends) {
+    public void setFriends(List<UserOld> friends) {
         this.friends = friends;
     }
 
