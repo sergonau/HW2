@@ -15,7 +15,18 @@ public class UserServiceImpl implements UserService {
         return userDAO.saveUser(user);
     }
 
-   /* @Override
+    @Override
+    public String registerUser(Users user) {
+        Users users = userDAO.getByEmailOrUserName(user.getEmail(), user.getUserName());
+
+        if (users != null)
+            return "User with this email or user name is registered";
+
+        userDAO.saveUser(user);
+        return "registered";
+    }
+
+    /* @Override
     public List<User> getAll() {
         return userDAO.getAll();
     }

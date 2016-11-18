@@ -9,6 +9,8 @@ public interface UserDAO {
 
     List<Users> getAll();
 
+    Users getByEmailOrUserName(String email, String userName);
+
     //Users get(String name, String psw);
 
     //void clean();

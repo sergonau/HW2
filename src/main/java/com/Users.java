@@ -80,10 +80,11 @@ public class Users extends BaseEntity {
     public Users() {
     }
 
-    public Users(String email, String password, String type) {
+    public Users(String email, String userName, String password, String type) {
         this.email = email;
         this.password = password;
         this.type = type;
+        this.userName = userName;
 
         this.isActive = 1;
         this.registered = new Date();

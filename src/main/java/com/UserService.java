@@ -6,6 +6,8 @@ public interface UserService {
 
     Users saveUser(Users user);
 
+    String registerUser(Users users);
+
    /* List<User> getAll();
 
     User get(String name, String psw);

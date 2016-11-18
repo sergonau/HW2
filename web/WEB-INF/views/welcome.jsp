@@ -3,8 +3,8 @@
 <head>
     <title>$Title$</title>
 </head>
-<body>Congrats, ${user.name}, you are ${state}!
-${user.city}
-${user.id}
+<body>
+<!--Congrats, ${user.userName}, you are ${state}!-->
+    ${result}
 </body>
 </html>

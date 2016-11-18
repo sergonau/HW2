@@ -50,11 +50,13 @@ public class UserController {
 
     @RequestMapping("/register")
     ModelAndView register() throws Exception {
-        Users user = new Users("test@gmail.com", "password", "admin");
+        Users user = new Users("test@gmail.com", "Denis", "password", "admin");
 
-        Users savedUser = userService.saveUser(user);
+        String result = userService.registerUser(user);
+
         ModelAndView modelAndView = new ModelAndView("welcome");
-        modelAndView.addObject("user", savedUser);
+        modelAndView.addObject("result", result);
+        modelAndView.addObject("user", user);
         modelAndView.addObject("state", "registered");
         return modelAndView;
     }
