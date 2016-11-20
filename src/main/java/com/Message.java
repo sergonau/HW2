@@ -2,7 +2,6 @@ package com;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "MESSAGES")
@@ -28,10 +27,6 @@ public class Message extends BaseEntity {
         this.isActive = true;
     }
 
-
-    // @ManyToOne
-    //@JoinColumn(name = "FROM_USER_ID")
-
     //@OneToMany(targetEntity = Article.class, mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     //public List<Article> getArticles() {
     //    return articles;
@@ -43,7 +38,9 @@ public class Message extends BaseEntity {
     //     return user;
     // }
 
-
+    @Id
+    @SequenceGenerator(name = "MESSAGES_SEQ", sequenceName = "MESSAGES_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MESSAGES_SEQ")
     public Long getId() {
         return id;
     }
@@ -68,10 +65,14 @@ public class Message extends BaseEntity {
         return isActive;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "FROM_USER_ID")
     public Users getFromUser() {
         return fromUser;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "TO_USER_ID")
     public Users getToUser() {
         return toUser;
     }

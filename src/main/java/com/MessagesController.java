@@ -11,7 +11,7 @@ import java.util.List;
 @Controller
 public class MessagesController {
 
-   /* @Autowired
+    @Autowired
     private MessageService messageService;
 
     @Autowired
@@ -20,16 +20,16 @@ public class MessagesController {
 
     @RequestMapping("/sendMessage")
     ModelAndView sendMessage() {
-        List<User> userList = userDAO.getAll();
-        User fromUser = userList.get(0);
-        User toUser = userList.get(1);
+        List<Users> userList = userDAO.getAll();
+        Users fromUser = userList.get(0);
+        Users toUser = userList.get(1);
         Message message = new Message(101, "Привет!! тест", fromUser, toUser);
 
-        if (!fromUser.isLogged()) {
+       /* if (!fromUser.isLogged()) {
             ModelAndView modelAndView = new ModelAndView("error");
             modelAndView.addObject("error", "you are is not logged in");
             return modelAndView;
-        }
+        }*/
 
         messageService.sendMessage(message);
 
@@ -38,7 +38,7 @@ public class MessagesController {
         return modelAndView;
     }
 
-    @RequestMapping("/messagesCount")
+   /* @RequestMapping("/messagesCount")
     ModelAndView getMessages() {
         User user = new User(1001, "Roman", Gender.MALE, "123", "Kiev");
 
