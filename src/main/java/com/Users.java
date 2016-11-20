@@ -77,6 +77,13 @@ public class Users extends BaseEntity {
     }
 
 
+
+    //one-to-one
+    //one-to-many +
+    //many-to-one
+    //many-to-many
+
+
     public Users() {
     }
 
