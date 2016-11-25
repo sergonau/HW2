@@ -17,8 +17,7 @@ public class Message extends BaseEntity {
 
     private boolean isActive;
 
-    public Message(long id, String msg, Users fromUser, Users toUser) {
-        this.id = id;
+    public Message(String msg, Users fromUser, Users toUser) {
         this.msg = msg;
         this.fromUser = fromUser;
         this.toUser = toUser;
@@ -75,5 +74,33 @@ public class Message extends BaseEntity {
     @JoinColumn(name = "TO_USER_ID")
     public Users getToUser() {
         return toUser;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public void setFromUser(Users fromUser) {
+        this.fromUser = fromUser;
+    }
+
+    public void setToUser(Users toUser) {
+        this.toUser = toUser;
+    }
+
+    public void setDateSent(Date dateSent) {
+        this.dateSent = dateSent;
+    }
+
+    public void setDateRead(Date dateRead) {
+        this.dateRead = dateRead;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

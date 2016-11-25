@@ -50,7 +50,7 @@ public class UserController {
 
     @RequestMapping("/register")
     ModelAndView register() throws Exception {
-        Users user = new Users("test@gmail.com", "Denis", "password", "admin");
+        Users user = new Users("test11@gmail.com", "Denis11", "password", "admin");
 
         String result = userService.registerUser(user);
 

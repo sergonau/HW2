@@ -1,12 +1,15 @@
 package com;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class MessageDAOImpl extends AbstractDAOImpl<Message> implements MessageDAO {
+@Repository
+@Transactional
+public class MessageDAOImpl extends AbstractDAOImplDB<Message> implements MessageDAO {
 
     private static List<Message> messages = new ArrayList<>();
 

@@ -12,7 +12,7 @@ import java.util.List;
 public class MessagesController {
 
     @Autowired
-    private MessageService messageService;
+    private MessageDAO messageDAO;
 
     @Autowired
     private UserDAO userDAO;
@@ -23,15 +23,15 @@ public class MessagesController {
         List<Users> userList = userDAO.getAll();
         Users fromUser = userList.get(0);
         Users toUser = userList.get(1);
-        Message message = new Message(101, "Привет!! тест", fromUser, toUser);
+        Message message = new Message("Привет!! тест", fromUser, toUser);
 
-       /* if (!fromUser.isLogged()) {
+       /*if (!fromUser.isLogged()) {
             ModelAndView modelAndView = new ModelAndView("error");
             modelAndView.addObject("error", "you are is not logged in");
             return modelAndView;
         }*/
 
-        messageService.sendMessage(message);
+        messageDAO.saveMessage(message);
 
         ModelAndView modelAndView = new ModelAndView("text");
         modelAndView.addObject("text", "message was sent");
