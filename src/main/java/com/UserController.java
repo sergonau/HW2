@@ -10,6 +10,8 @@ import java.util.List;
 @Controller
 public class UserController {
 
+    //test
+
     //db connection emul
     @Autowired
     private UserService userService;
