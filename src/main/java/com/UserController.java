@@ -20,36 +20,6 @@ public class UserController {
 
     @Autowired
     private UserDAO userDAO;
-    
-
-    /*@RequestMapping("/login")
-    ModelAndView login() {
-        //test data
-        String name = "Roman";
-        String password = "123";
-
-        User curUser = userService.login(name, password);
-
-        ModelAndView modelAndView;
-        if (curUser == null)
-            return new ModelAndView("error");
-        else modelAndView = new ModelAndView("welcome");
-
-        modelAndView.addObject("user", curUser);
-        modelAndView.addObject("state", "logged in");
-
-        return modelAndView;
-    }
-
-    @RequestMapping("/logout")
-    ModelAndView logout() {
-        //test data
-        User user = new User(1001, "Roman", Gender.MALE, "123", "Kiev");
-
-        userService.logout(user);
-
-        return new ModelAndView("home");
-    }*/
 
 
     @RequestMapping("/register")
