@@ -2,5 +2,6 @@ package com;
 
 public enum Gender {
     MALE,
-    FEMALE
+    FEMALE,
+    TEST
 }
